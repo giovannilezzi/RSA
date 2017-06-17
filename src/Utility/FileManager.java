@@ -1,4 +1,4 @@
-package RSA;
+package Utility;
 
 import java.io.*;
 import java.math.BigInteger;
@@ -24,7 +24,7 @@ public class FileManager{
     }
 
     public ArrayList<String> readFromFile(String nomefile) throws IOException {
-        File file = new File(nomefile + ".bin");
+        File file = new File( nomefile + ".bin");
         FileReader fr = new FileReader(file);
         BufferedReader reader = new BufferedReader(fr);
         ArrayList<String> righe = new ArrayList<>();

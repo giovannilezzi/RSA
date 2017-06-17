@@ -1,4 +1,7 @@
-package RSA;
+package comunicazioneClientServer;
+
+import rsa.RSA;
+import rsa.KeyGenerator;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,17 +48,17 @@ public class Client {
                 boolean ripeti;
                 do{
                     ripeti = true;
-                    //invio dati al RSA.Server
-                    System.out.println("Messaggio da inviare al RSA.Server:");
+                    //invio dati al comunicazioneClientServer.Server
+                    System.out.println("Messaggio da inviare al comunicazioneClientServer.Server:");
                     inputLine = in.nextLine();
                     BigInteger messaggioCodificato = rsa.scriviEcripta(inputLine, "ChiaviPubblicheServer");
-                    System.out.println("Messaggio da inviare al RSA.Server CODIFICATO:" + messaggioCodificato);
+                    System.out.println("Messaggio da inviare al comunicazioneClientServer.Server CODIFICATO:" + messaggioCodificato);
                     socketOut.println(messaggioCodificato); //stampo nel socket la stringa da voler inviare
                     socketOut.flush();	//svuota il flusso di dati prendi su socketOut
-                    //ricezione dati dal RSA.Server
+                    //ricezione dati dal comunicazioneClientServer.Server
                     BigInteger messaggioCriptato = new BigInteger(socketIn.nextLine());
-                    System.out.println("Messaggio ricevuto dal RSA.Client CRIPTATO:" + messaggioCriptato );
-                    System.out.println("Messaggio ricevuto dal RSA.Client DECRIPTATO:" + rsa.decrypt(messaggioCriptato, D, E));
+                    System.out.println("Messaggio ricevuto dal comunicazioneClientServer.Client CRIPTATO:" + messaggioCriptato );
+                    System.out.println("Messaggio ricevuto dal comunicazioneClientServer.Client DECRIPTATO:" + rsa.decrypt(messaggioCriptato, D, E));
                 }while(ripeti); //cinvio il contenuto del socket la servericla solo quando si esegue il codice di default e viene richiesto all'utente di reinserire la propria scelta
             }
         }
@@ -75,7 +78,7 @@ public class Client {
 
     public static void main(String[] args) throws Exception {
         Client client = new Client("127.0.0.1", 1337);
-        int numerocifre = 10;//fino a 13 funziona
+        int numerocifre = 1024;//fino a 13 funziona
         client.startClient();
         KeyGenerator keyGenerator = new KeyGenerator();
         ArrayList<BigInteger> chiaviPrivate = keyGenerator.getprivatesKey(numerocifre);//restituisce P e Q in ordine
