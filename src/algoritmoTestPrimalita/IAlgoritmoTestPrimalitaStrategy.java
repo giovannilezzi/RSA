@@ -3,17 +3,17 @@ package algoritmoTestPrimalita;
 import java.math.BigInteger;
 
 /**
- * Questa interfaccia contiene l'algoritmo per verificare la primalit� di un numero primo - Design Pattern Strategy
+ * Questa interfaccia contiene l'algoritmo per verificare la primalità di un numero primo - Design Pattern Strategy
  *
- * Created by root on 17/06/17.
+ * @author Giovanni
  */
 public interface IAlgoritmoTestPrimalitaStrategy {
     /**
-     * Testa la primalit� del numero intero dispari n, per diverse volte.
+     * Testa la primalità del numero intero dispari n, per diverse volte.
      *
      * @param n     Numero intero da testare.
      * @param times Numero di volte in cui effettuare il test.
-     * @return True se il numero � probabilmente primo. False se � composto.
+     * @return True se il numero è probabilmente primo. False se è composto.
      */
     public boolean testaPrimalitaIntero(BigInteger n, int times);
 }

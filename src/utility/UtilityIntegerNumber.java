@@ -1,8 +1,7 @@
-package Utility;
+package utility;
 
 import algoritmoTestPrimalita.AlgoritmoTestPrimalitaMillerRabinStrategy;
 import algoritmoTestPrimalita.IAlgoritmoTestPrimalitaStrategy;
-
 import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,7 +10,8 @@ import java.util.Random;
 
 /**
  * Questa classe contiene differenti metodi, utili per il calcolo con numeri interi.
- * Created by root on 17/06/17.
+ *
+ * @author Giovanni
  */
 public class UtilityIntegerNumber {
     /**
@@ -84,7 +84,7 @@ public class UtilityIntegerNumber {
      * Metodo per ottenere la lista dei numeri primi, precedenti al numero dato.
      *
      * @param number   Upper bound, della lista dei numeri primi.
-     * @param accuracy Accuratezza della verifica di primalit�.
+     * @param accuracy Accuratezza della verifica di primalità.
      * @return Lista dei numeri primi precedenti al numero dato.
      */
     public static List<BigInteger> getListaPrimiPrecedentiNumber(BigInteger number, int accuracy) {
@@ -135,9 +135,7 @@ public class UtilityIntegerNumber {
         /*
          * Controllo che il max e il min non siano lo stesso numero.
          */
-        else if (max.compareTo(min) == 0) {
-            return min;
-        }
+        else if (max.compareTo(min) == 0) {return min;}
         /*
          *  Incremento di 1, il massimo per considerare anch'esso nell'intervallo dei possibili candidati.
          */
@@ -153,12 +151,6 @@ public class UtilityIntegerNumber {
         }
         // Riporto il risultato nell'intervallo corretto.
         result = result.add(min);
-
-//        System.out.println("------");
-//        System.out.println("min: " + min.toString());
-//        System.out.println("max: " + max.toString());
-//        System.out.println("result: " + result.toString());
-
 
         return result;
     }

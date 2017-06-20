@@ -4,10 +4,20 @@ import java.math.BigInteger;
 import java.util.Random;
 
 /**
- * Created by root on 17/06/17.
+ * Questa classe rappresenta l'implementazione per verificare la primalità di un numero intero mediante l'applicazione
+ * dell'algoritmo di Fermat. - Design Pattern Strategy
+ *
+ * @author Giovanni
  */
 
 public class AlgoritmoTestPrimalitàFermatStrategy implements IAlgoritmoTestPrimalitaStrategy {
+    /**
+     * Testa la primalità del numero intero dispari n, per diverse volte.
+     *
+     * @param n     Numero intero da testare.
+     * @param times Numero di volte in cui effettuare il test.
+     * @return
+     */
     @Override
     public boolean testaPrimalitaIntero(BigInteger n, int times) {
         if (n.equals(BigInteger.ONE))

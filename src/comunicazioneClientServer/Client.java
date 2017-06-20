@@ -12,7 +12,10 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
- * Created by root on 17/06/17.
+ * Questa classe Implementa un Client che comunicherà con un Server
+ * attraverso una comunicazione cifrata dall'RSA
+ *
+ * @author Giovanni
  */
 
 public class Client {
@@ -24,12 +27,22 @@ public class Client {
     PrintWriter socketOut;
     Scanner in;
 
-
+    /**
+     * Costruttore
+     *
+     * @param ip
+     * @param port
+     */
     public Client(String ip, int port) {
         this.ip = ip;
         this.port = port;
     }
 
+    /**
+     * Metodo che inizializza la comunicazione da parte del Client
+     *
+     * @throws IOException
+     */
     public void startClient() throws IOException { //eseguo il metodo attraverso IOException poiche necessito di un controllo dei dati in input ed output
         socket = new Socket(ip, port); //inizializzo un socket con ip del destinatario e porta da utilizzare
         System.out.println("Connessione con il server stabilita" + '\n' + "Per terminare la partita scrivere: 'Esci'" + '\n');
@@ -39,7 +52,14 @@ public class Client {
 
     }
 
-    public void comunica(BigInteger D, BigInteger E) throws IOException {
+    /**
+     * Metodo che comunica effettivamente con il Server
+     *
+     * @param D chiave privata del Client per decriptare il messaggio arrivato dal Server
+     * @param N chiave pubblica del Server per decriptare il messaggio arrivato dal Server
+     * @throws IOException
+     */
+    public void comunica(BigInteger D, BigInteger N) throws IOException {
         try {
             String inputLine; //stringa per l'input da tastiera
             in = new Scanner(System.in); //inizializzo uno scanner per acquisire l'input da tastiera
@@ -58,7 +78,7 @@ public class Client {
                     //ricezione dati dal comunicazioneClientServer.Server
                     BigInteger messaggioCriptato = new BigInteger(socketIn.nextLine());
                     System.out.println("Messaggio ricevuto dal comunicazioneClientServer.Client CRIPTATO:" + messaggioCriptato );
-                    System.out.println("Messaggio ricevuto dal comunicazioneClientServer.Client DECRIPTATO:" + rsa.decrypt(messaggioCriptato, D, E));
+                    System.out.println("Messaggio ricevuto dal comunicazioneClientServer.Client DECRIPTATO:" + rsa.decrypt(messaggioCriptato, D, N));
                 }while(ripeti); //cinvio il contenuto del socket la servericla solo quando si esegue il codice di default e viene richiesto all'utente di reinserire la propria scelta
             }
         }
@@ -70,6 +90,11 @@ public class Client {
         }
     }
 
+    /**
+     * chiude la comunicazione
+     *
+     * @throws IOException
+     */
     public void close() throws IOException {
         socketIn.close(); //chiusura del scanner per l'acquisizionde dei flussi in entrata
         socketOut.close(); //chiusura del printwriter per l'invio dei flussi in uscita

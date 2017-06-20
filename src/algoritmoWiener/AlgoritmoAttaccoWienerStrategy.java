@@ -3,10 +3,10 @@ package algoritmoWiener;
 import java.math.*;
 import java.util.ArrayList;
 
-/**
- * Created by root on 17/06/17.
+/** Questa classe Implementa l'attacco Attraverso Wiener
+ *
+ * @author Giovanni
  */
-
 
 public class AlgoritmoAttaccoWienerStrategy implements IAlgoritmoAttaccoStrategy{
 
@@ -16,9 +16,17 @@ public class AlgoritmoAttaccoWienerStrategy implements IAlgoritmoAttaccoStrategy
     public final static BigInteger three = new BigInteger("3");
     private WienerResult _result;
 
+    /**
+     * Costruttore
+     */
     public AlgoritmoAttaccoWienerStrategy() {
         _result = new WienerResult();
     }
+
+    /**
+     *
+     * @param key lista di stringhe di chiavi publiche
+     */
     @Override
     public void attack(ArrayList<String> key) {
         BigInteger temp, x, y;
@@ -118,6 +126,9 @@ public class AlgoritmoAttaccoWienerStrategy implements IAlgoritmoAttaccoStrategy
         }
     }
 
+    /**
+     * Questa classe stampa il risultato
+     */
     public void printResult() {
         if(_result.success) {
             System.out.println("p = " + _result.p.toString());
@@ -128,12 +139,22 @@ public class AlgoritmoAttaccoWienerStrategy implements IAlgoritmoAttaccoStrategy
         }
     }
 
+    /**
+     * Verfica se un numero è una radice
+     * @param n
+     * @return
+     */
     public static boolean isSquare(BigInteger n) {
         if(sqrt(n).pow(2).subtract(n).compareTo(zero) != 0)
             return false;
         else return true;
     }
 
+    /**
+     * Calcola la radice di un numero
+     * @param n
+     * @return
+     */
     public static BigInteger sqrt(BigInteger n) {
         BigInteger a = one;
         BigInteger b = new BigInteger(n.shiftRight(5).add(new BigInteger("8")).toString());

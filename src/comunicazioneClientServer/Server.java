@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by root on 17/06/17.
+ * Questa classe Implementa un Server che comunicherà con un Client
+ * attraverso una comunicazione cifrata dall'RSA
+ *
+ * @author Giovanni
  */
-
 public class Server {
 
     ServerSocket serverSocket;
@@ -24,10 +26,20 @@ public class Server {
     PrintWriter	socketOut;
     Scanner	in;
 
+    /**
+     * Costruttore
+     *
+     * @param port
+     */
     public Server(int port) {
         this.port =	port;
     }
 
+    /**
+     * Metodo che inizializza la comunicazione da parte del Client
+     *
+     * @throws IOException
+     */
     public void startServer() throws IOException {
         serverSocket = new ServerSocket(port); //inizializzo un un serversocket per permettere al client di instaurare una connessione
         System.out.println("comunicazioneClientServer.Server socket pronto sulla porta: " + port);
@@ -36,6 +48,14 @@ public class Server {
         socketIn = new Scanner(socket.getInputStream()); //inizializzo uno scanner per acquisire i flussi di dati in entrata nel socket
         socketOut = new PrintWriter(socket.getOutputStream());
     }
+
+    /**
+     * Metodo che comunica effettivamente con il Server
+     *
+     * @param D chiave privata del Server per decriptare il messaggio arrivato dal Server
+     * @param N chiave pubblica del Client per decriptare il messaggio arrivato dal Server
+     * @throws IOException
+     */
 
     public void comunica(BigInteger D, BigInteger N) throws IOException {
         in = new Scanner(System.in); //inizializzo uno scanner per acquisire l'input da tastiera
@@ -61,6 +81,11 @@ public class Server {
         }
     }
 
+    /**
+     * chiude la comunicazione
+     *
+     * @throws IOException
+     */
     public void close() throws IOException {
         System.out.println("Chiusura socket");
         socketIn.close();

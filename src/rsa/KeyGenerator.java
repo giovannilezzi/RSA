@@ -1,11 +1,9 @@
 package rsa;
 
-
-import Utility.FileManager;
-import Utility.UtilityIntegerNumber;
+import utility.FileManager;
+import utility.UtilityIntegerNumber;
 import algoritmoTestPrimalita.AlgoritmoTestPrimalitaMillerRabinStrategy;
 import algoritmoTestPrimalita.IAlgoritmoTestPrimalitaStrategy;
-
 import java.io.*;
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -13,11 +11,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
 /**
- * Created by root on 17/06/17.
+ * Classe che genera le chiavi pubbliche e private
+ *
+ *@author Giovanni
  */
 public class KeyGenerator {
-
+    /***
+     * Accuratezza
+     */
     private static int _accuracy = 100;
 
     /**
@@ -102,11 +105,23 @@ public class KeyGenerator {
         return e;
     }
 
+    /**
+     * Calcola N=P*Q
+     * @param p
+     * @param q
+     * @return
+     */
+
     private BigInteger getn(BigInteger p, BigInteger q) {
         return p.multiply(q);
 
     }
 
+    /**
+     * Restituisce le chiavi private
+     * @param numerocifre
+     * @return
+     */
     public ArrayList<BigInteger> getprivatesKey(int numerocifre) {
         //genero le chiavi private del client
         ArrayList<BigInteger> chiaviprivate = new ArrayList<>();
@@ -119,6 +134,15 @@ public class KeyGenerator {
         return chiaviprivate;
     }
 
+    /**
+     * Calcola e salva le chiavi pubbliche su un file esterno
+     *
+     * @param chiaviPrivate
+     * @param numerocifre
+     * @param nomeFile
+     * @return
+     * @throws IOException
+     */
     public ArrayList<BigInteger> computeAndSavePublicKeyOnFile(ArrayList<BigInteger> chiaviPrivate, int numerocifre, String nomeFile) throws IOException {
         // genero le chiavi pubbliche del client
         ArrayList<BigInteger> chiavipubbliche = new ArrayList<>();

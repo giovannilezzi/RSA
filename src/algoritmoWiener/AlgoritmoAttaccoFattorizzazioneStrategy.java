@@ -1,19 +1,24 @@
 package algoritmoWiener;
 
-import Utility.FileManager;
+import utility.FileManager;
 
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
-/**
- * Created by root on 17/06/17.
+/** Questa classe Implementa l'attacco con Fattorizazione
+ *
+ * @author Giovanni
  */
 public class AlgoritmoAttaccoFattorizzazioneStrategy implements IAlgoritmoAttaccoStrategy {
 
     private ArrayList<BigInteger> chiaviTrovate;
     private boolean trovate = false;
 
+    /**
+     * Qeusto metodo implementa l'attacco attraverso la fattorizzazione
+     * @param key Prende in ingresso la lista di chiavi pubbliche
+     */
     @Override
     public void attack(ArrayList<String> key){
         BigInteger N = new BigInteger(key.get(0));
@@ -42,6 +47,9 @@ public class AlgoritmoAttaccoFattorizzazioneStrategy implements IAlgoritmoAttacc
         else trovate = false;
     }
 
+    /**
+     * Questa classe stampa il risultato
+     */
     public void printResult() {
         if(trovate) {
             System.out.println("p = " + chiaviTrovate.get(0));

@@ -1,19 +1,16 @@
-/**
- * Created by root on 17/06/17.
- */
-
-import Utility.FileManager;
+import utility.FileManager;
 import algoritmoWiener.IAlgoritmoAttaccoStrategy;
 import algoritmoWiener.AlgoritmoAttaccoWienerStrategy;
 
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Main
+ * @author Giovanni
+ *
+ */
 public class Main {
-
-
-
-
 
     public static void main(String[] args) throws IOException {
         FileManager fileManager = new FileManager();

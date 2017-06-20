@@ -1,13 +1,13 @@
 package algoritmoTestPrimalita;
 
-import Utility.UtilityIntegerNumber;
+import utility.UtilityIntegerNumber;
 import java.math.BigInteger;
 
 /**
- * Questa classe rappresenta l'implementazione per verificare la primalit� di un numero intero mediante l'applicazione
+ * Questa classe rappresenta l'implementazione per verificare la primalità di un numero intero mediante l'applicazione
  * dell'algoritmo di Miller-Rabin. - Design Pattern Strategy
  *
- * Created by root on 17/06/17.
+ * @author Giovanni
  */
 public class AlgoritmoTestPrimalitaMillerRabinStrategy implements IAlgoritmoTestPrimalitaStrategy {
     /**
@@ -27,8 +27,12 @@ public class AlgoritmoTestPrimalitaMillerRabinStrategy implements IAlgoritmoTest
      */
     private BigInteger _y;
 
-    /* (non-Javadoc)
-     * @see com.rsa.model.algoritmoTestPrimalita.IAlgoritmoTestPrimalitaStrategy#testaPrimalitaIntero(java.math.BigInteger, int)
+    /**
+     * Testa la primalità del numero intero dispari n, per diverse volte.
+     *
+     * @param n     Numero intero da testare.
+     * @param times Numero di volte in cui effettuare il test.
+     * @return
      */
     public boolean testaPrimalitaIntero(BigInteger n, int times) {
         // Inizializzo _s e _r nulli.
@@ -68,7 +72,7 @@ public class AlgoritmoTestPrimalitaMillerRabinStrategy implements IAlgoritmoTest
     /**
      * Metodo per calcolare i componenti dell'equazione n-1=2^s * r.
      *
-     * @param n Numero di cui si vuole testare la primalit�.
+     * @param n Numero di cui si vuole testare la primalità.
      */
     private void calcola_r_s(BigInteger n) {
         // Calcolo n - 1
@@ -82,10 +86,6 @@ public class AlgoritmoTestPrimalitaMillerRabinStrategy implements IAlgoritmoTest
         }
         // Per ricavare r, effettuo la divisione tra n e 2^s.
         _r = n.divide(new BigInteger("2").pow(_s.intValue()));
-
-//		System.out.println("s: " + _s.toString());
-//		System.out.println("r: " + _r.toString());
-//		System.out.println("2^s * r: " + new BigInteger("2").pow(_s.intValue()).multiply(_r));
     }
 
 }
