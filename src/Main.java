@@ -1,6 +1,6 @@
 import utility.FileManager;
-import algoritmoWiener.IAlgoritmoAttaccoStrategy;
-import algoritmoWiener.AlgoritmoAttaccoWienerStrategy;
+import algoritmoAttacco.IAlgoritmoAttaccoStrategy;
+import algoritmoAttacco.AlgoritmoAttaccoWienerStrategy;
 
 import java.io.*;
 import java.util.ArrayList;

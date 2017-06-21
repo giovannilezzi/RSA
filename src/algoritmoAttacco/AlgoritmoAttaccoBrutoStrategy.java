@@ -1,4 +1,4 @@
-package algoritmoWiener;
+package algoritmoAttacco;
 
 import utility.FileManager;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Giovanni
  */
-public class AlgoritmoAttaccoFattorizzazioneStrategy implements IAlgoritmoAttaccoStrategy {
+public class AlgoritmoAttaccoBrutoStrategy implements IAlgoritmoAttaccoStrategy {
 
     private ArrayList<BigInteger> chiaviTrovate;
     private boolean trovate = false;
@@ -64,7 +64,7 @@ public class AlgoritmoAttaccoFattorizzazioneStrategy implements IAlgoritmoAttacc
     public static void main(String[] args) throws IOException {
         FileManager fileManager = new FileManager();
         ArrayList<String> chiaviPubblicheClient = fileManager.readFromFile("ChiaviPubblicheClient");
-        AlgoritmoAttaccoFattorizzazioneStrategy attaccoFattorizzazione = new AlgoritmoAttaccoFattorizzazioneStrategy();
+        AlgoritmoAttaccoBrutoStrategy attaccoFattorizzazione = new AlgoritmoAttaccoBrutoStrategy();
         attaccoFattorizzazione.attack(chiaviPubblicheClient);
         attaccoFattorizzazione.printResult();
     }

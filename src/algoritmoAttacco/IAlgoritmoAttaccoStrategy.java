@@ -1,4 +1,4 @@
-package algoritmoWiener;
+package algoritmoAttacco;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
